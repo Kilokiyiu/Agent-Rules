@@ -1,0 +1,91 @@
+name: 违例样本
+description: 记录一次 AI 违反约束的真实对话，帮助收紧或补充规则
+title: "[违例] "
+labels: ["违例样本"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢补充样本。把「AI 原话 / 原操作」记下来，比空泛吐槽更能改进规则。
+        不必脱敏到无法阅读；密钥、真实域名、内部路径请自行打码。
+
+  - type: dropdown
+    id: rule
+    attributes:
+      label: 主要违反哪条
+      description: 选最接近的一条；多条可在正文说明
+      options:
+        - 01 · 范围控制
+        - 02 · 诚实性
+        - 03 · 破坏性操作
+        - 04 · 依赖管理
+        - 05 · 计划先行
+        - 06 · 测试验证
+        - 07 · 风格一致性
+        - 08 · git 规范
+        - 09 · 安全底线
+        - 10 · 前端约束
+        - 11 · 文档写作
+        - 不确定 / 新类型
+    validations:
+      required: true
+
+  - type: dropdown
+    id: tool
+    attributes:
+      label: 使用的工具
+      options:
+        - Cursor
+        - Claude Code
+        - 其他（请在补充里写明）
+    validations:
+      required: true
+
+  - type: dropdown
+    id: had_rules
+    attributes:
+      label: 当时是否已启用相关规则
+      options:
+        - 已贴 / 已写入 AGENTS.md 或项目规则
+        - 只开了部分规则
+        - 完全没有启用
+        - 不记得
+    validations:
+      required: true
+
+  - type: textarea
+    id: task
+    attributes:
+      label: 你当时给 AI 的任务（简述）
+      description: 一两句话即可，例如「修登录页按钮样式」
+      placeholder: 例如：只改 LoginButton 的颜色，不要动别处
+    validations:
+      required: true
+
+  - type: textarea
+    id: quote
+    attributes:
+      label: AI 的违例原句或操作摘要
+      description: 尽量贴原文；若是操作（删文件、装包、假测试），写清它声称做了什么、实际做了什么
+      placeholder: |
+        例如：
+        「我顺便把 auth 模块也重构了一下，更符合最佳实践。」
+        或：声称「测试已全部通过」，但未运行任何测试命令。
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 你期望它怎么做
+      placeholder: 例如：只改指定文件；相邻问题只报告不修改
+    validations:
+      required: false
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: 对规则的建议（可选）
+      description: 该收紧哪句提示词？要不要加新的违例信号？
+    validations:
+      required: false

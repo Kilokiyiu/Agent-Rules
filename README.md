@@ -16,7 +16,7 @@
 
 <br/>
 
-[总入口](rules/汇总.md) · [一键提示词](.cursor/rules/AGENTS.md) · [文档写作](rules/11-文档写作.md)
+[总入口](rules/汇总.md) · [一键提示词](docs/AGENTS.md) · [文档写作](rules/11-文档写作.md)
 
 </div>
 
@@ -83,10 +83,10 @@ AGENTS.md
 .cursor/rules/
 ```
 
-本仓库已带可直接引用的副本：
+本仓库已带可直接复制的副本：
 
 ```text
-/rules/AGENTS.md
+docs/AGENTS.md
 ```
 
 ### 方式 B · 单次对话按需粘贴
@@ -106,7 +106,7 @@ AGENTS.md
 需要一次性复制全部约束时，打开总汇集版：
 
 → **[rules/汇总.md · 总汇集版提示词](rules/汇总.md#总汇集版提示词直接使用)**  
-→ Cursor 可直接引用：[`.cursor/rules/AGENTS.md`](.cursor/rules/AGENTS.md)
+→ 一键复制副本：[docs/AGENTS.md](docs/AGENTS.md)
 
 ---
 
@@ -208,8 +208,8 @@ Agent Rules/
 │   ├── 10-前端约束.md             🟢 P2
 │   └── 11-文档写作.md             🟡 P1
 │
-└── .cursor/rules/
-    └── AGENTS.md                  ← 总汇集版副本，Cursor 可直接引用
+└── docs/
+    └── AGENTS.md                  ← 总汇集版副本，复制到项目即可用
 ```
 
 ---
@@ -225,7 +225,8 @@ Agent Rules/
 
 <div align="center">
 
-欢迎用 Issue / PR 补充违例样本、松紧建议，或其他 Agent 工具的适配片段。
+欢迎用 Issue / PR 补充违例样本、松紧建议，或其他 Agent 工具的适配片段。  
+新建 Issue 时可直接选 **「违例样本」** 或 **「规则改进建议」** 模板。
 
 <br/>
 

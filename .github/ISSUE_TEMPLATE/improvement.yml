@@ -1,0 +1,41 @@
+name: 规则改进建议
+description: 建议收紧、放宽或新增某一条约束
+title: "[改进] "
+labels: ["改进建议"]
+body:
+  - type: dropdown
+    id: rule
+    attributes:
+      label: 相关规则
+      options:
+        - 01 · 范围控制
+        - 02 · 诚实性
+        - 03 · 破坏性操作
+        - 04 · 依赖管理
+        - 05 · 计划先行
+        - 06 · 测试验证
+        - 07 · 风格一致性
+        - 08 · git 规范
+        - 09 · 安全底线
+        - 10 · 前端约束
+        - 11 · 文档写作
+        - 总汇集 / 权限层
+        - 新规则提案
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: 现状问题
+      placeholder: 例如：长对话后「先确认再删」经常被忘掉
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 建议怎么改
+      placeholder: 改提示词原文、加违例信号、或补硬性权限说明均可
+    validations:
+      required: true

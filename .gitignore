@@ -16,10 +16,8 @@ $RECYCLE.BIN/
 *.sublime-project
 *.sublime-workspace
 
-# Cursor local state (keep .cursor/rules/ tracked)
-.cursor/*
-!.cursor/rules/
-!.cursor/rules/**
+# Cursor (local only, never push)
+.cursor/
 
 # Env & secrets
 .env
@@ -64,6 +62,9 @@ __pycache__/
 venv/
 .pytest_cache/
 .mypy_cache/
+
+# Local-only (never push)
+local/
 
 # Misc
 *.local
