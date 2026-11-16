@@ -6,8 +6,6 @@
 
 **Make your agent follow your habits**
 
-Change only what you asked · Report only what actually happened · Ask before anything destructive
-
 <br/>
 
 ![Rules](https://img.shields.io/badge/rules-11_dimensions-0F172A?style=flat-square)
@@ -26,11 +24,7 @@ Change only what you asked · Report only what actually happened · Ask before a
 
 Most AI coding failures are not about weak models — they are about **agents you cannot control**. They refactor behind your back, invent “tests passed” stories, delete files without asking, or quietly add dependencies.
 
-This repo splits those failure modes into **11 copy-paste constraints** so the agent does what you asked:
-
-| Soft constraints | Hard gates |
-|:----------------:|:----------:|
-| Dimensioned prompts you can mix<br/>and paste into a chat or project config | File permissions and high-risk confirms<br/>wired into Agent / tool settings |
+This repo splits those failure modes into **11 copy-paste constraints** so the agent does what you asked
 
 Works with Cursor, Claude Code, and any agent that supports `AGENTS.md` / system prompts.
 
@@ -54,8 +48,6 @@ Every rule page is bilingual: **简体中文** (default) · English counterparts
 ---
 
 ## 1. Why these rules
-
-> Every rule page follows the same shape: **why → when → copy-paste prompt → violation signals → how to loosen/tighten**
 
 | Common failure | Which rule |
 |----------------|------------|
