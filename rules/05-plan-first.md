@@ -1,6 +1,6 @@
 # 05 · Plan first (P1)
 
-**English** | [简体中文](05-计划先行.md)
+[简体中文](05-计划先行.md) | **English**
 
 For medium/large work: plan first, get approval, then code. If the plan is wrong, stop and re-confirm.
 

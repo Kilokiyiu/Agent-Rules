@@ -1,6 +1,6 @@
 # 02 · Honesty (P0)
 
-**English** | [简体中文](02-诚实性.md)
+[简体中文](02-诚实性.md) | **English**
 
 The agent must separate “I know” from “I guess,” and report only what actually happened.
 

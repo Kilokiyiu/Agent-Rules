@@ -2,84 +2,82 @@
 
 # Agent Rules
 
-**English** | [简体中文](README.zh-CN.md)
+**简体中文** | [English](README.en.md)
 
-**Make your agent follow your habits**
+**让 Agent 真正懂你的习惯**
 
-Change only what you asked · Report only what actually happened · Ask before anything destructive
-
-<br/>
-
-![Rules](https://img.shields.io/badge/rules-11_dimensions-0F172A?style=flat-square)
-![P0](https://img.shields.io/badge/P0-always_on-DC2626?style=flat-square)
-![P1](https://img.shields.io/badge/P1-serious_projects-D97706?style=flat-square)
-![P2](https://img.shields.io/badge/P2-opt_in-16A34A?style=flat-square)
-![Copy-paste](https://img.shields.io/badge/usage-copy--paste-2563EB?style=flat-square)
+只改该改的 · 只说真发生的 · 危险动作先问再做
 
 <br/>
 
-[Rules hub](rules/README.md) · [Copy-paste prompts](docs/AGENTS.md) · [Docs writing](rules/11-documentation-writing.md)
+![Rules](https://img.shields.io/badge/规则-11_维-0F172A?style=flat-square)
+![P0](https://img.shields.io/badge/P0-始终开启-DC2626?style=flat-square)
+![P1](https://img.shields.io/badge/P1-正式项目-D97706?style=flat-square)
+![P2](https://img.shields.io/badge/P2-按需选用-16A34A?style=flat-square)
+![Copy-paste](https://img.shields.io/badge/用法-复制即用-2563EB?style=flat-square)
+
+<br/>
+
+[总入口](rules/README.md) · [一键提示词](docs/AGENTS.md) · [文档写作](rules/11-文档写作.md)
 
 </div>
 
 ---
 
-Most AI coding failures are not about weak models — they are about **agents you cannot control**. They refactor behind your back, invent “tests passed” stories, delete files without asking, or quietly add dependencies.
+AI 辅助开发最常翻车的地方，往往不是 AI 能力不够，而是**你很多时候往往控制不住自己的 AI**——它可能会在背后重构你的架构、编造不存在的「已通过」案例、擅自删文件、悄悄装依赖。
 
-This repo splits those failure modes into **11 copy-paste constraints** so the agent does what you asked:
+本仓库把这些行为拆成 **11 份可复制的约束**，让 AI 按照你的需求来实现你的目的：
 
-| Soft constraints | Hard gates |
-|:----------------:|:----------:|
-| Dimensioned prompts you can mix<br/>and paste into a chat or project config | File permissions and high-risk confirms<br/>wired into Agent / tool settings |
+| 软约束 | 硬闸门 |
+|:------:|:------:|
+| 按维度拆分的提示词<br/>日常可以组合不同提示词、可以贴进对话 | 文件权限与高危确认<br/>写进 Agent / 工具配置 |
 
-Works with Cursor, Claude Code, and any agent that supports `AGENTS.md` / system prompts.
-
-Every rule page is bilingual: **English** (default filenames) · [简体中文](README.zh-CN.md) counterparts.
+适合 Cursor、Claude Code，以及其他支持 `AGENTS.md` / 系统提示词的 Agent。
 
 ---
 
-## Contents
+## 目录
 
 | | |
 |---|---|
-| 01 | [Why these rules](#1-why-these-rules) |
-| 02 | [Quick start](#2-quick-start) |
-| — | [Prompt pack](#prompt-pack) |
-| 03 | [Rule index](#3-rule-index) |
-| 04 | [How to combine them](#4-how-to-combine-them) |
-| 05 | [Hard permission layer](#5-hard-permission-layer) |
-| 06 | [Repo layout](#6-repo-layout) |
-| 07 | [How to iterate](#7-how-to-iterate) |
+| 01 | [为什么需要约束](#1-为什么需要约束以及解决什么问题) |
+| 02 | [快速上手](#2-快速上手) |
+| — | [提示词总集](#提示词总集) |
+| 03 | [规则一览](#3-规则一览) |
+| 04 | [怎么组合使用](#4-怎么组合使用) |
+| 05 | [硬性权限层](#5-硬性权限层) |
+| 06 | [仓库结构](#6-仓库结构) |
+| 07 | [如何迭代](#7-如何迭代) |
 
 ---
 
-## 1. Why these rules
+## 1. 为什么需要约束以及解决什么问题
 
-> Every rule page follows the same shape: **why → when → copy-paste prompt → violation signals → how to loosen/tighten**
+> 每一份规则结构相同：**为什么需要 → 何时启用 → 可复制提示词 → 违例信号 → 松紧调节**
 
-| Common failure | Which rule |
-|----------------|------------|
-| You asked for a bugfix; it refactored the whole module | [01 · Scope control](rules/01-scope-control.md) |
-| It says “tests passed” — and may never have run them | [02 · Honesty](rules/02-honesty.md) |
-| Deletes files / force-pushes without confirmation | [03 · Destructive ops](rules/03-destructive-ops.md) |
-| Installs packages or swaps frameworks without asking | [04 · Dependency management](rules/04-dependency-management.md) |
-| Wrong direction discovered only after a pile of rework | [05 · Plan first](rules/05-plan-first.md) |
-| Deletes tests to make the suite “green” | [06 · Test verification](rules/06-test-verification.md) |
-| New code looks like a different style guide | [07 · Style consistency](rules/07-style-consistency.md) |
-| Commits on its own with message `update` | [08 · Git hygiene](rules/08-git-hygiene.md) |
-| Secrets in source, string-built SQL | [09 · Security floor](rules/09-security-floor.md) |
-| Adds a button and restyles the whole site | [10 · Frontend constraints](rules/10-frontend-constraints.md) |
-| Docs read like telegram fragments | [11 · Documentation writing](rules/11-documentation-writing.md) |
+| 常见事故 | 用哪条管 |
+|----------|----------|
+| 你让 AI 修一个 bug，可他却顺手重构了整个模块 | [01 · 范围控制](rules/01-范围控制.md) |
+| 他告诉你「已测试通过」—— 实际上他可能连测试都没测试过 | [02 · 诚实性](rules/02-诚实性.md) |
+| 没经过你的确认就删文件 / force push | [03 · 破坏性操作](rules/03-破坏性操作.md) |
+| 不问就擅自装新包、换新框架 | [04 · 依赖管理](rules/04-依赖管理.md) |
+| 方向错了很晚才发现，有一堆工作需要返工 | [05 · 计划先行](rules/05-计划先行.md) |
+| 删测试让结果「变绿」 | [06 · 测试验证](rules/06-测试验证.md) |
+| 新代码一看就是另一套新风格 | [07 · 风格一致性](rules/07-风格一致性.md) |
+| 擅自 commit 写 `update` | [08 · git 规范](rules/08-git规范.md) |
+| 不小心将密钥写进源码、SQL 字符串拼接 | [09 · 安全底线](rules/09-安全底线.md) |
+| 加个按钮，结果顺手改了全站配色 | [10 · 前端约束](rules/10-前端约束.md) |
+| 文档全是电报体，人类读不懂 | [11 · 文档写作](rules/11-文档写作.md) |
 
-Full navigation and the combined prompt pack → **[rules/README.md](rules/README.md)**
+完整导航与总汇集版提示词 → **[rules/README.md](rules/README.md)**
 
 ---
 
-## 2. Quick start
+## 2. 快速上手
 
-### Option A · Project-level (recommended)
+### 方式 A · 项目级长期生效（推荐）
 
-Copy the combined prompt pack into any of:
+把总汇集版提示词复制到任一项即可长期生效：
 
 ```text
 CLAUDE.md
@@ -87,156 +85,150 @@ AGENTS.md
 .cursor/rules/
 ```
 
-Ready-to-copy files:
+本仓库已带可直接复制的副本：
 
 ```text
-docs/AGENTS.md          ← English
-docs/AGENTS.zh-CN.md    ← 简体中文
+docs/AGENTS.md       ← 简体中文（默认）
+docs/AGENTS.en.md    ← English
 ```
 
-### Option B · Paste per chat
+### 方式 B · 单次对话按需粘贴
 
-For small tasks, paste the **P0 trio** (`01` / `02` / `03`), then add one more by scenario:
+日常小任务只贴 **P0 三条**（`01` / `02` / `03`），再按场景加一条：
 
 ```text
-UI change        →  add  10 · Frontend
-Bug fix          →  add  06 · Tests
-Writing docs     →  use  11 · prompt template at end of that rule
-New dependency   →  add  04 · Dependencies
-Medium/large work→  add  05 · Plan first
+改 UI       →    加  10 · 前端约束
+修 bug      →    加  06 · 测试验证
+写文档      →    用  11 · 文末提示词模板
+装新依赖    →    加  04 · 依赖管理
+中大型改动  →    加  05 · 计划先行
 ```
 
-### Prompt pack
+### 提示词总集
 
-→ **[rules/README.md · combined prompts](rules/README.md#combined-prompt-pack-copy-paste)**  
-→ [docs/AGENTS.md](docs/AGENTS.md) · [docs/AGENTS.zh-CN.md](docs/AGENTS.zh-CN.md)
+需要一次性复制全部约束时，打开总汇集版：
+
+→ **[rules/README.md · 总汇集版提示词](rules/README.md#总汇集版提示词直接使用)**  
+→ 一键复制：[docs/AGENTS.md](docs/AGENTS.md) · [docs/AGENTS.en.md](docs/AGENTS.en.md)
 
 ---
 
-## 3. Rule index
+## 3. 规则一览
 
 ```text
-🔴 P0  Always on              Scope · Honesty · Destructive ops
-🟡 P1  Recommended for real work  Deps · Plan · Tests · Style · Docs
-🟢 P2  Opt in by project type     Git · Security · Frontend
+🔴 P0  始终开启          范围 · 诚实 · 破坏性操作
+🟡 P1  正式项目建议开启   依赖 · 计划 · 测试 · 风格 · 文档
+🟢 P2  按项目性质选用     git · 安全 · 前端
 ```
 
-| # | Rule | Priority | One-liner |
-|:-:|------|:--------:|-----------|
-| 01 | [Scope control](rules/01-scope-control.md) | 🔴 **P0** | Only what you asked — not what it thinks is “also worth doing” |
-| 02 | [Honesty](rules/02-honesty.md) | 🔴 **P0** | Separate “I know” from “I guess”; report only real outcomes |
-| 03 | [Destructive ops](rules/03-destructive-ops.md) | 🔴 **P0** | Delete / reset / wipe data: list → confirm → then act |
-| 04 | [Dependency management](rules/04-dependency-management.md) | 🟡 **P1** | Before any new package: reason + your OK |
-| 05 | [Plan first](rules/05-plan-first.md) | 🟡 **P1** | Medium/large changes: plan first, execute after confirm |
-| 06 | [Test verification](rules/06-test-verification.md) | 🟡 **P1** | Changes need real verification; no fake greens |
-| 07 | [Style consistency](rules/07-style-consistency.md) | 🟡 **P1** | New code should match *your* repo style |
-| 08 | [Git hygiene](rules/08-git-hygiene.md) | 🟢 **P2** | Commits only with your OK; clean diff; clear why |
-| 09 | [Security floor](rules/09-security-floor.md) | 🟢 **P2** | No secrets in source · validate input · parameterized SQL |
-| 10 | [Frontend constraints](rules/10-frontend-constraints.md) | 🟢 **P2** | Follow the existing design system; no freestyle redesigns |
-| 11 | [Documentation writing](rules/11-documentation-writing.md) | 🟡 **P1\*** | Write docs humans can actually read |
+| # | 规则 | 优先级 | 一句话 |
+|:-:|------|:------:|--------|
+| 01 | [范围控制](rules/01-范围控制.md) | 🔴 **P0** | 只做交代的事，不做它觉得「顺便该做」的事 |
+| 02 | [诚实性](rules/02-诚实性.md) | 🔴 **P0** | 区分「我知道的」和「我猜的」，只告诉你真实的结果 |
+| 03 | [破坏性操作](rules/03-破坏性操作.md) | 🔴 **P0** | 删文件、重置、清数据：先输出清单 → 得到确认 → 执行 |
+| 04 | [依赖管理](rules/04-依赖管理.md) | 🟡 **P1** | 装任何新包之前，先说清理由并征得同意 |
+| 05 | [计划先行](rules/05-计划先行.md) | 🟡 **P1** | 中大型改动先出方案，经过你的确认后才执行 |
+| 06 | [测试验证](rules/06-测试验证.md) | 🟡 **P1** | 改了就要验证；严格执行测试流程 |
+| 07 | [风格一致性](rules/07-风格一致性.md) | 🟡 **P1** | 让新代码按照你喜欢的风格实现 |
+| 08 | [git 规范](rules/08-git规范.md) | 🟢 **P2** | 提交必须经过你的确认；内容干净，说明写清改了什么、为什么 |
+| 09 | [安全底线](rules/09-安全底线.md) | 🟢 **P2** | 密钥不进源码 · 输入必校验 · SQL 必参数化 |
+| 10 | [前端约束](rules/10-前端约束.md) | 🟢 **P2** | 以当前设计体系与组件库为中心，不擅自改设计、换框架 |
+| 11 | [文档写作](rules/11-文档写作.md) | 🟡 **P1\*** | 写适合人看，人能读懂的文档 |
 
-<sup>\*</sup> When docs are the main deliverable, treat rule 11 as **P0**. Cheat-sheets may skip tone clauses — see that rule for details.
+<sup>\*</sup> 当文档本身就是主要产出时，建议把 11 号按 **P0** 优先级对待。速查表可豁免文风条款，详见 11 号正文。
 
 ---
 
-## 4. How to combine them
+## 4. 怎么组合使用
 
-Tune by project stage — do not enable everything forever.
+按项目阶段调节松紧，而不是一次全开、永远不变。
 
-| Situation | How to tune |
-|-----------|-------------|
-| **Early prototype** | Pause `05` for speed; loosen dependency confirms |
-| **Refactor / near ship** | Keep `05` on; tighten scope and style |
-| **Multi-agent** | `01` + `03` + [permissions](#5-hard-permission-layer) are mandatory |
-| **CLI with no UI** | Skip `10` |
-| **Offline personal scripts** | Skip `09` if you want |
-| **Docs-heavy work** | Promote `11` to P0; use its template |
+| 场景 | 怎么调 |
+|------|--------|
+| **开发早期(原型期)** | 可暂时关闭 `05`，换试错速度；依赖确认可放宽 |
+| **重构 / 接近成型** | `05` 必开；范围与风格从严 |
+| **多代理协作** | `01` + `03` + [权限配置](#5-硬性权限层) 是刚需 |
+| **无前端的 CLI** | 可省略 `10` |
+| **纯离线个人脚本** | 可省略 `09` |
+| **文档密集型项目** | `11` 升为最高优先级 P0；套用 11 号模板 |
 
 <details>
-<summary><b>Multi-agent note</b></summary>
+<summary><b>多代理协作特别提醒</b></summary>
 
 <br/>
 
-Sub-agents stepping on each other is the top failure mode in multi-agent setups. Enable at least:
+子代理各自为政、互相踩脚，是多代理模式最大的事故来源。至少同时启用：
 
-1. [01 · Scope control](rules/01-scope-control.md) — stop out-of-scope edits  
-2. [03 · Destructive ops](rules/03-destructive-ops.md) — stop irreversible actions  
-3. Hard permissions below — sub-agents must not write the docs library / `.git/` directly
+1. [01 · 范围控制](rules/01-范围控制.md) — 防止越界改文件  
+2. [03 · 破坏性操作](rules/03-破坏性操作.md) — 防止不可逆动作  
+3. 下方硬性权限 — 子代理不得直写文档库 / `.git/`
 
 </details>
 
 ---
 
-## 5. Hard permission layer
+## 5. 硬性权限层
 
-> Prompts are reminders. Permissions are gates. “Ask before delete” that lives only in a prompt decays badly in long chats.
+> 提示词管日常提醒；权限配置管硬闸门。只写在提示词里的删除确认，在长对话中失效率很高。
 
 ```text
-# ── File permissions ────────────────────────
-- Deny sub-agent writes to: docs/, reference/, lessons/, .git/
-- Sub-agents may only report findings as suggestions to the main agent
-- Doc writes and commits are done or dispatched by the main agent only
+# ── 文件权限 ────────────────────────────────
+- 禁止子代理写入：docs/、reference/、lessons/、.git/
+- 子代理发现问题，只能以建议回传主代理
+- 文档写入与代码提交由主代理统一执行或派发
 
-# ── High-risk ops (confirmation required) ───
-- rm / del style deletes
-- git reset --hard / push --force / history rewrites
-- Bulk ops (>10 files moved / renamed / deleted): confirm and batch
+# ── 高危操作（不可跳过确认）────────────────
+- rm / del 类删除
+- git reset --hard / push --force / 历史改写
+- 批量操作（>10 个文件的移动 / 重命名 / 删除）：确认且分批
 
-# ── Floor ───────────────────────────────────
-- These are hard boundaries; no prompt may be read as permission to bypass them
+# ── 兜底 ────────────────────────────────────
+- 以上是硬性边界，任何提示词不得解释为可以绕过
 ```
 
-Full notes and the combined prompt → **[rules/README.md](rules/README.md)**
+完整说明与可复制总提示词 → **[rules/README.md](rules/README.md)**
 
 ---
 
-## 6. Repo layout
+## 6. 仓库结构
 
 ```text
 Agent Rules/
 │
-├── README.md                         ← English (default)
-├── README.zh-CN.md                   ← 简体中文
+├── README.md                         ← 简体中文（默认）
+├── README.en.md                      ← English
 │
 ├── rules/
-│   ├── README.md                     ← English hub
-│   ├── 汇总.md                       ← Chinese hub
-│   ├── 01-scope-control.md           🔴 P0  (+ 01-范围控制.md)
-│   ├── 02-honesty.md                 🔴 P0
-│   ├── 03-destructive-ops.md         🔴 P0
-│   ├── 04-dependency-management.md   🟡 P1
-│   ├── 05-plan-first.md              🟡 P1
-│   ├── 06-test-verification.md       🟡 P1
-│   ├── 07-style-consistency.md       🟡 P1
-│   ├── 08-git-hygiene.md             🟢 P2
-│   ├── 09-security-floor.md          🟢 P2
-│   ├── 10-frontend-constraints.md    🟢 P2
-│   └── 11-documentation-writing.md   🟡 P1
+│   ├── README.md                     ← 中文总入口
+│   ├── README.en.md                  ← English hub
+│   ├── 01-范围控制.md                🔴 P0  （另有 01-scope-control.md）
+│   ├── …                             （每条规则均有中英双文件）
+│   └── 11-文档写作.md                🟡 P1
 │
 └── docs/
-    ├── AGENTS.md                     ← English prompt pack
-    └── AGENTS.zh-CN.md               ← Chinese prompt pack
+    ├── AGENTS.md                     ← 中文总汇集版（默认）
+    └── AGENTS.en.md                  ← 英文总汇集版
 ```
 
-Each English rule page links to its 简体中文 twin at the top.
+每条规则页顶部可切换 **简体中文 | English**。
 
 ---
 
-## 7. How to iterate
+## 7. 如何迭代
 
-This is v1 and still evolving.
+本规则目前是第一版，后续仍在完善中。
 
-Whenever an agent violates a rule, paste the exact quote into that rule’s “violation signals” section. Accumulated samples tell you what to tighten and what to relax.
+每次 AI 违反某条约束时，请把违例原句记到对应文档的「典型违例信号」里。累积的样本会告诉你：哪条该收紧，哪条可以放宽。
 
 ---
 
 <div align="center">
 
-Issues / PRs welcome: real violation quotes, loosen/tighten suggestions, or adapters for other agent tools.  
-Use the **Violation sample** or **Rule improvement** issue templates.
+欢迎用 Issue / PR 补充违例样本、松紧建议，或其他 Agent 工具的适配片段。  
+新建 Issue 时可直接选 **「违例样本」** 或 **「规则改进建议」** 模板。
 
 <br/>
 
-**[Start here → rules/README.md](rules/README.md)** · **[中文版](README.zh-CN.md)**
+**[开始阅读 → rules/README.md](rules/README.md)** · **[English](README.en.md)**
 
 </div>

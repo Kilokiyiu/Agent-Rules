@@ -1,6 +1,6 @@
 # 01 · Scope control (P0)
 
-**English** | [简体中文](01-范围控制.md)
+[简体中文](01-范围控制.md) | **English**
 
 The agent does only what you asked — not what it thinks is “also worth doing.”
 

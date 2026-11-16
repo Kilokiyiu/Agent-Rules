@@ -1,6 +1,6 @@
 # 03 · Destructive operations (P0)
 
-**English** | [简体中文](03-破坏性操作.md)
+[简体中文](03-破坏性操作.md) | **English**
 
 Irreversible actions (delete files, reset branches, wipe data) require: inventory → confirm → then execute.
 

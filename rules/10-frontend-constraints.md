@@ -1,6 +1,6 @@
 # 10 · Frontend constraints (P2)
 
-**English** | [简体中文](10-前端约束.md)
+[简体中文](10-前端约束.md) | **English**
 
 Implement UI against the existing design system and component library. No freestyle redesigns or framework swaps.
 

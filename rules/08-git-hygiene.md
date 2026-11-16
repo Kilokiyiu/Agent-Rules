@@ -1,6 +1,6 @@
 # 08 · Git hygiene (P2)
 
-**English** | [简体中文](08-git规范.md)
+[简体中文](08-git规范.md) | **English**
 
 Commits need your confirmation. Diffs must be clean; messages must be specific.
 

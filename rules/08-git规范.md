@@ -1,6 +1,6 @@
 # 08 · git 规范（P2）
 
-[English](08-git-hygiene.md) | **简体中文**
+**简体中文** | [English](08-git-hygiene.md)
 
 提交动作必须经你确认，提交内容必须干净、说明必须具体。
 

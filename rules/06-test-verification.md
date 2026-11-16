@@ -1,6 +1,6 @@
 # 06 · Test verification (P1)
 
-**English** | [简体中文](06-测试验证.md)
+[简体中文](06-测试验证.md) | **English**
 
 Every change needs verification with real run output. Failures must not be papered over.
 

@@ -1,6 +1,6 @@
 # 09 · Security floor (P2)
 
-**English** | [简体中文](09-安全底线.md)
+[简体中文](09-安全底线.md) | **English**
 
 No secrets in source, validate external input, parameterize SQL — no exceptions.
 

@@ -1,6 +1,6 @@
 # 11 · Documentation writing (P1*)
 
-**English** | [简体中文](11-文档写作.md)
+[简体中文](11-文档写作.md) | **English**
 
 > \* Day-to-day: P1. When docs are the main deliverable: treat as **P0**. Cheat-sheets may skip tone clauses (sections 1–7 style rules); governance clauses still apply.
 

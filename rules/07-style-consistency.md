@@ -1,6 +1,6 @@
 # 07 · Style consistency (P1)
 
-**English** | [简体中文](07-风格一致性.md)
+[简体中文](07-风格一致性.md) | **English**
 
 New code must look like this repo’s code — not like generic “AI best practices.”
 

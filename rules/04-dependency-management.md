@@ -1,6 +1,6 @@
 # 04 · Dependency management (P1)
 
-**English** | [简体中文](04-依赖管理.md)
+[简体中文](04-依赖管理.md) | **English**
 
 Before installing any new package, the agent must explain why and get your OK.
 
