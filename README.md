@@ -103,6 +103,10 @@ docs/AGENTS.en.md    ← English
 → **[rules/README.md · 总汇集版提示词](rules/README.md#总汇集版提示词直接使用)**  
 → 一键复制：[docs/AGENTS.md](docs/AGENTS.md) · [docs/AGENTS.en.md](docs/AGENTS.en.md)
 
+### 技能包
+
+Cursor Skill 形式（`SKILL.md` + 提示词 + 参考）：→ **[skills/coding-agent-guardrails/](skills/coding-agent-guardrails/)**
+
 ---
 
 ## 3. 规则一览

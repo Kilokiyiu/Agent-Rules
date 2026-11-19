@@ -103,6 +103,10 @@ Medium/large work→  add  05 · Plan first
 → **[rules/README.en.md · combined prompts](rules/README.en.md#combined-prompt-pack-copy-paste)**  
 → [docs/AGENTS.en.md](docs/AGENTS.en.md) · [docs/AGENTS.md](docs/AGENTS.md)
 
+### Skill package
+
+Cursor Skill form (`SKILL.md` + prompts + reference): → **[skills/coding-agent-guardrails/](skills/coding-agent-guardrails/)**
+
 ---
 
 ## 3. Rule index
